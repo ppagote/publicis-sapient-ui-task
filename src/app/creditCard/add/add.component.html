@@ -1,0 +1,77 @@
+<h3>Add</h3>
+<div class="alert alert-danger" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <!-- <div class="row"> -->
+  <div class="col-sm-6 form-group">
+    <label for="userName">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="userName"
+      placeholder="Enter Name"
+      name="userName"
+      #userName="ngModel"
+      [(ngModel)]="model.userName"
+      required
+      size="300"
+    />
+    <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      Name is required
+    </div> -->
+    <div *ngIf="userName.invalid && f.submitted" class="alert alert-danger">
+      <div  *ngIf="userName.errors?.required">Name is required.</div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 form-group">
+    <label for="name">Card number</label>
+    <input
+      type="text"
+      class="form-control"
+      id="ccNumber"
+      placeholder="Enter Card Number"
+      name="ccNumber"
+      #ccNumber="ngModel"
+      [(ngModel)]="model.ccNumber"
+      required
+      pattern="^[0-9]{1,19}"
+    />
+    <div *ngIf="ccNumber.invalid && f.submitted" class="alert alert-danger">
+      <div  *ngIf="ccNumber.errors?.required">Card Number is required.</div>
+      <div *ngIf="ccNumber.errors?.pattern">
+        Card Number must contains only digits and cannot be greater than 19 digits.
+      </div>
+    </div>
+  </div>
+  <!--  </div>
+  <div class="row"> -->
+  <div class="col-sm-6 form-group">
+    <label for="name">Limit</label>
+    <input
+      type="text"
+      class="form-control"
+      id="ccLimit"
+      placeholder="Enter Card Limit"
+      name="ccLimit"
+      #ccLimit="ngModel"
+      [(ngModel)]="model.ccLimit"
+      required
+      pattern="^[0-9]{1,9}"
+    />
+    <div *ngIf="ccLimit.invalid && f.submitted" class="alert alert-danger">
+      <div  *ngIf="ccLimit.errors?.required">Card Limit is required.</div>
+      <div *ngIf="ccLimit.errors?.pattern">
+        Card Limit must contains only digits and cannot be greater than 10 digits.
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+  <div class="col-xs-12">
+    <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">
+      Add
+    </button>
+  </div>
+</form>
+<app-list></app-list>
