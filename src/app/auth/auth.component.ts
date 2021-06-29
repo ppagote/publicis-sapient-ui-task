@@ -22,6 +22,7 @@ export class AuthComponent {
 
   onSubmit(form: NgForm) {
     this.error = '';
+    this.successResp = '';
     if (!form.valid) {
       return;
     }
@@ -59,7 +60,7 @@ export class AuthComponent {
       },
       (errorMessage) => {
         console.log(errorMessage);
-        this.error = 'Error while logging.';
+        this.error = 'Error while logging/Registring.';
         this.isLoading = false;
       }
     );

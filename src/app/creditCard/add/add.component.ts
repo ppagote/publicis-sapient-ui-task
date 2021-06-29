@@ -14,7 +14,7 @@ export interface ErrorResp {
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
 })
-export class AddComponent implements OnInit, OnDestroy {
+export class AddComponent implements OnInit {
   model = new Credit('', '', '');
   // addSubscription: Subscription;
   error = null;
@@ -49,7 +49,4 @@ export class AddComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
-    // this.addSubscription.unsubscribe();
-  }
 }

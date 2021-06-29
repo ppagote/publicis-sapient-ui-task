@@ -60,10 +60,10 @@
       required
       pattern="^[0-9]{1,9}"
     />
-    <div *ngIf="ccLimit.invalid && f.submitted" class="alert alert-danger">
+    <!-- || f.touched -->
+    <div *ngIf="ccLimit.invalid && (f.submitted)" class="alert alert-danger">
       <div  *ngIf="ccLimit.errors?.required">Card Limit is required.</div>
       <div *ngIf="ccLimit.errors?.pattern">
-        Card Limit must contains only digits and cannot be greater than 10 digits.
       </div>
     </div>
   </div>
